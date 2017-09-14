@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
 
-
-#Commands for running parametric simulations using the F-Matrix method. 
-#The commands listed in F1.sh should be run prior to running the commands in this file.
-
-
 #Lines beginning with # are comments.
-#Set the current working directory to "room" before running the commands below.
-#Commands are separated by empty line-breaks.
+#This file is a part of a Radiance Tutorial commissioned by the Lawrence Berkeley National Laboratory.
+#Date:19 AUG 2017
+#Created by Sarith Subramaniam(sarith@sarith.in)
+
+#Commands for running PARAMETRIC SIMULATIONS USING THE FACADE-MATRIX METHOD. 
+#The commands below demonstrate this in the context of the F1 approach. This can be expanded to FH and FN approaches as well.
+#The commands listed in 4PM_FmtxF1.sh should be run prior to running the commands in this file.
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#NOTES:
+#	Set the current working directory to "room" before running the commands below.
+#	Commands are separated by empty line-breaks.
+#	The epw file used in the current tutorial contains only 40 timesteps so that the simulations can completed in a reasonable time.
 
 
 # Recreate octree with the glass overhang.
@@ -30,3 +37,5 @@ dctimestep -h matrices/vmtx/hdr/southF%03d.hdr matrices/tmtx/clear.xml matrices/
 
 #Illuminance
 dctimestep  matrices/vmtx/vF.mtx matrices/tmtx/clear.xml matrices/dmtx/DF1Diff.dfmx skyVectors/NYC_Per.vec | rmtxop -fa -c 47.4 119.9 11.6 - > results/fmtx/F1Diff.ill
+
+#Done! (results can be found in results/fmtx folder)

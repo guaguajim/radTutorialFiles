@@ -1,20 +1,25 @@
 #!/usr/bin/env bash
 
-#Commands for Daylight Coefficients simulation.
-
-
 #Lines beginning with # are comments.
-#Set the current working directory to "room" before running the commands below.
-#Commands are separated by empty line-breaks.
+#This file is a part of a Radiance Tutorial commissioned by the Lawrence Berkeley National Laboratory.
+#Date:19 AUG 2017
+#Created by Sarith Subramaniam(sarith@sarith.in)
 
+
+# Commands for a DAYLIGHT COEFFICIENTS simulation.
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#NOTES:
+#	Set the current working directory to "room" before running the commands below.
+#	Commands are separated by empty line-breaks.
+#	The epw file used in the current tutorial contains only 40 timesteps so that the simulations can completed in a reasonable time.
 
 #Create octree
 oconv materials.rad room.rad objects/Glazing.rad > octrees/roomDC.oct
 
 
 #Steps for creating daylight coefficients for images
-
-#Generate daylight coefficients
 
 ##Step for creating daylight coefficients for illuminace calculations.
 ###The command "vwrays -vf views/south.vf -x 400 -y 400 -pj 0.7 -c 9 -ff" generates the input rays from view file and pipes it to rfluxmtx.
@@ -33,6 +38,7 @@ gendaylit 3 20 10:30EDT -m 75 -o 73.96 -a 40.78 -W 706 162 | genskyvec -m 1 > sk
 ##Annual sky-matrix
 epw2wea assets/USA_NY_New.York-Central.Park.725033_TMY3m.epw assets/NYC.wea
 
+#Create an annual daylight matrix with 145 patches.
 gendaymtx -m 1 assets/NYC.wea > skyVectors/NYC.smx
 
 
@@ -55,5 +61,7 @@ dctimestep matrices/dc/illum.mtx skyVectors/NYC_Per.vec | rmtxop -fa -t -c 47.4 
 
 ###For annual calculation
 dctimestep matrices/dc/illum.mtx skyVectors/NYC.smx | rmtxop -fa -t -c 47.4 119.9 11.6 - > results/dc/annualR.ill
+
+#Done! (The results can be found in the results/dc folder).
 
 

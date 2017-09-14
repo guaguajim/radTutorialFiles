@@ -1,15 +1,24 @@
 #!/usr/bin/env bash
 
-#Commands for Daylight Coefficients simulation.
-
-#Increasing ulimit is essential for opening more number of files simultaneously.
-#This command is applicable to Unix-like systems only. On Windows the number of simultaneous files is limited to 512.
-ulimit -n 1048576
-
 #Lines beginning with # are comments.
-#Set the current working directory to "room" before running the commands below.
-#Commands are separated by empty line-breaks.
+#This file is a part of a Radiance Tutorial commissioned by the Lawrence Berkeley National Laboratory.
+#Date:19 AUG 2017
+#Created by Sarith Subramaniam(sarith@sarith.in)
 
+
+#Commands for DAYLIGHT COEFFICCIENTS SIMULATIONS featuring SKIES WITH HIGHER DISCRETIZATIONS ( greater than 145 patches).
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#NOTES:
+#	Set the current working directory to "room" before running the commands below.
+#	Commands are separated by empty line-breaks.
+#	The epw file used in the current tutorial contains only 40 timesteps so that the simulations can completed in a reasonable time.
+
+
+#Ulimit needs to be set to a high enough value so that multiple files can be opened simulataneously.
+#This command is applicable to Unix-like systems only. On Windows the number of simultaneous files is limited to 512.
+ulimit -n 9999
 
 #Create octree
 oconv materials.rad room.rad objects/Glazing.rad > octrees/roomDC.oct
@@ -17,17 +26,17 @@ oconv materials.rad room.rad objects/Glazing.rad > octrees/roomDC.oct
 
 #Steps for creating daylight coefficients for images
 
-#Generate daylight coefficients
+##Generate daylight coefficients
 
-#Images
-#vwrays -vf views/south.vf -x 300 -y 300 -pj 0.7 -c 9 -ff | rfluxmtx -ffc -v -n 16 `vwrays -vf views/south.vf -x 300 -y 300 -d` -c 9  -ab 4 -ad 10000 -lw 0.0001 -o matrices/dc/hdr/south1%04d.hdr - skyDomes/skyglowR1.rad -i octrees/roomDC.oct
-#vwrays -vf views/south.vf -x 300 -y 300 -pj 0.7 -c 9 -ff | rfluxmtx -ffc -v -n 16 `vwrays -vf views/south.vf -x 300 -y 300 -d` -c 9  -ab 4 -ad 30000 -lw 3.33e-5 -o matrices/dc/hdr/south2%04d.hdr - skyDomes/skyglowR2.rad -i octrees/roomDC.oct
+###Images
+vwrays -vf views/south.vf -x 300 -y 300 -pj 0.7 -c 9 -ff | rfluxmtx -ffc -v -n 16 `vwrays -vf views/south.vf -x 300 -y 300 -d` -c 9  -ab 4 -ad 10000 -lw 0.0001 -o matrices/dc/hdr/south1%04d.hdr - skyDomes/skyglowR1.rad -i octrees/roomDC.oct
+vwrays -vf views/south.vf -x 300 -y 300 -pj 0.7 -c 9 -ff | rfluxmtx -ffc -v -n 16 `vwrays -vf views/south.vf -x 300 -y 300 -d` -c 9  -ab 4 -ad 30000 -lw 3.33e-5 -o matrices/dc/hdr/south2%04d.hdr - skyDomes/skyglowR2.rad -i octrees/roomDC.oct
 vwrays -vf views/south.vf -x 300 -y 300 -pj 0.7 -c 9 -ff | rfluxmtx -ffc -v -n 16 `vwrays -vf views/south.vf -x 300 -y 300 -d` -c 9  -ab 4 -ad 90000 -lw 1.11e-5 -o matrices/dc/hdr/south3%04d.hdr - skyDomes/skyglowR3.rad -i octrees/roomDC.oct
 vwrays -vf views/south.vf -x 300 -y 300 -pj 0.7 -c 9 -ff | rfluxmtx -ffc -v -n 16 `vwrays -vf views/south.vf -x 300 -y 300 -d` -c 9  -ab 4 -ad 120000 -lw 8.3e-6 -o matrices/dc/hdr/south4%04d.hdr - skyDomes/skyglowR4.rad -i octrees/roomDC.oct
 
 
 
-##Step for creating daylight coefficients for illuminace calculations.
+###Illuminance
 rfluxmtx -I+ -y 100 -ab 5 -ad 10000 -lw 0.0001 -n 16 - skyDomes/skyglowR1.rad -i octrees/roomDC.oct < points.txt > matrices/dc/illumR1.mtx
 rfluxmtx -I+ -y 100 -ad 30000 -lw 3.33e-5 -ab 5 -n 16 - skyDomes/skyglowR2.rad -i octrees/roomDC.oct < points.txt > matrices/dc/illumR2.mtx
 rfluxmtx -I+ -y 100 -ad 90000 -lw 1.11e-5 -ab 5 -n 16 - skyDomes/skyglowR3.rad -i octrees/roomDC.oct < points.txt > matrices/dc/illumR3.mtx
@@ -35,7 +44,7 @@ rfluxmtx -I+ -y 100 -ad 120000 -lw 8.3e-6 -ab 5 -n 16 - skyDomes/skyglowR4.rad -
 
 
 #Create sky-vectors
-##Point-in-time sky vector
+##Point-in-time sky vector.
 gendaylit 3 20 10:30EDT -m 75 -o 73.96 -a 40.78 -W 706 162 | genskyvec -m 1 > skyVectors/NYC_Per1.vec
 gendaylit 3 20 10:30EDT -m 75 -o 73.96 -a 40.78 -W 706 162 | genskyvec -m 2 > skyVectors/NYC_Per2.vec
 gendaylit 3 20 10:30EDT -m 75 -o 73.96 -a 40.78 -W 706 162 | genskyvec -m 3 > skyVectors/NYC_Per3.vec
@@ -58,3 +67,4 @@ dctimestep matrices/dc/illumR3.mtx skyVectors/NYC_Per3.vec | rmtxop -fa -t -c 47
 dctimestep matrices/dc/illumR4.mtx skyVectors/NYC_Per4.vec | rmtxop -fa -t -c 47.4 119.9 11.6 - > results/dc/R4.ill
 
 
+#Done! (The results can be found in the directory results/dc).

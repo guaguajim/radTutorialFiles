@@ -1,23 +1,26 @@
 #!/usr/bin/env bash
 
-#Commands for running an F-Matrix simulation with the FN approach.
-
-
 #Lines beginning with # are comments.
-#Set the current working directory to "room" before running the commands below.
-#Commands are separated by empty line-breaks.
+#This file is a part of a Radiance Tutorial commissioned by the Lawrence Berkeley National Laboratory.
+#Date:19 AUG 2017
+#Created by Sarith Subramaniam(sarith@sarith.in)
 
+#Commands for running an FACADE MATRIX SIMULATION (FN) where the EXTERNAL SHADING SYSTEM EXTENDS BEYOND THE FACADE.
+
+#NOTES:
+#	Set the current working directory to "room3" before running the commands below.
+#	Commands are separated by empty line-breaks..
 
 # Create an octree
-#oconv -f materials.rad room.rad overhang/aluminium_metal_grate.rad > octrees/roomFmtx.oct
+oconv -f materials.rad room.rad overhang/aluminium_metal_grate.rad > octrees/roomFmtx.oct
 
 
 #V matrix for Illuminance
-#rfluxmtx -v -I+ -ab 4 -ad 5000 -lw 0.0002 -n 16 -y 100  - objects/GlazingVmtx.rad -i octrees/roomFmtx.oct < points.txt > matrices/vmtx/vF.mtx
+rfluxmtx -v -I+ -ab 4 -ad 5000 -lw 0.0002 -n 16 -y 100  - objects/GlazingVmtx.rad -i octrees/roomFmtx.oct < points.txt > matrices/vmtx/vF.mtx
 
 
 #V matrix for Images.
-#vwrays -vf views/south.vf -x 400 -y 400 -pj 0.7 -c 9 -ff | rfluxmtx -v -ffc `vwrays -vf views/south.vf -x 400 -y 400 -d` -o matrices/vmtx/hdr/southF%03d.hdr -ab 4 -ad 1000 -lw 1e-4 -c 9 -n 32 - objects/GlazingVmtx.rad -i octrees/roomFmtx.oct
+vwrays -vf views/south.vf -x 400 -y 400 -pj 0.7 -c 9 -ff | rfluxmtx -v -ffc `vwrays -vf views/south.vf -x 400 -y 400 -d` -o matrices/vmtx/hdr/southF%03d.hdr -ab 4 -ad 1000 -lw 1e-4 -c 9 -n 32 - objects/GlazingVmtx.rad -i octrees/roomFmtx.oct
 
 
 
@@ -95,6 +98,7 @@ gendaylit 3 20 10:30EDT -m 75 -o 73.96 -a 40.78 -W 706 162 | genskyvec -m 1 > sk
 ##Annual sky-matrix
 epw2wea assets/USA_NY_New.York-Central.Park.725033_TMY3m.epw assets/NYC.wea
 
+###Create an annual sky matrix with 145 patches.
 gendaymtx -m 1 assets/NYC.wea > skyVectors/NYC.smx
 
 
@@ -114,3 +118,5 @@ dctimestep -h matrices/vmtx/hdr/southF%03d.hdr matrices/tmtx/clear.xml matrices/
 
 ##For an annual simulation
 dctimestep -o results/fmtx/hdr/southFN%04d.hdr matrices/vmtx/hdr/southF%03d.hdr matrices/tmtx/clear.xml matrices/dmtx/DFN.dfmx skyVectors/NYC.smx
+
+#Done! (results can be found in results/fmtx folder).

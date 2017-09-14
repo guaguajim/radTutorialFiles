@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
 
-
-#Commands for running an F-Matrix (FN) simulation for a room with windows in multiple directions.
-
-
 #Lines beginning with # are comments.
-#Set the current working directory to "room2" before running the commands below.
-#Commands are separated by empty line-breaks.
+#This file is a part of a Radiance Tutorial commissioned by the Lawrence Berkeley National Laboratory.
+#Date:19 AUG 2017
+#Created by Sarith Subramaniam(sarith@sarith.in)
 
-#The commands in the file FH.sh must be run before running the commands in this file. 
+
+#Commands for running an FACADE-MATRIX (FN) simulation for a ROOM WITH WINDOWS IN MULTIPLE DIRECTIONS.
+
+
+
+#NOTES:
+#	Set the current working directory to "room2" before running the commands below.
+#	Commands are separated by empty line-breaks.
+#	The commands in the file FH.sh must be run before running the commands in this file (to avoid repeating the steps for creating the View Matrix) 
 
 
 
@@ -285,4 +290,7 @@ dctimestep matrices/vmtx/vFGl2.mtx  matrices/tmtx/clear.xml matrices/dmtx/Gl2FN.
 
 dctimestep matrices/vmtx/vFGl3.mtx  matrices/tmtx/clear.xml matrices/dmtx/Gl3FN.dfmx  skyVectors/NYC_Per.vec | rmtxop -fa -t -c 47.4 119.9 11.6 - > results/fmtx/windowGroups/FNGl3.ill
 
+#Combine results from window groups together.
 rmtxop results/fmtx/windowGroups/FNCl1.ill + results/fmtx/windowGroups/FNCl2.ill + results/fmtx/windowGroups/FNCl3.ill + results/fmtx/windowGroups/FNGl1.ill + results/fmtx/windowGroups/FNGl2.ill + results/fmtx/windowGroups/FNGl3.ill > results/fmtx/FN.ill
+
+#Done! (results can be found in results/fmtx folder).

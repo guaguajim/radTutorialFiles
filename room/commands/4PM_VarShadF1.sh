@@ -1,19 +1,25 @@
 #!/usr/bin/env bash
 
-
-#Commands for running an F-Matrix simulation with multiple window groups.
-
-
 #Lines beginning with # are comments.
-#Set the current working directory to "room" before running the commands below.
-#Commands are separated by empty line-breaks.
+#This file is a part of a Radiance Tutorial commissioned by the Lawrence Berkeley National Laboratory.
+#Date:19 AUG 2017
+#Created by Sarith Subramaniam(sarith@sarith.in)
+
+
+#Commands for running an FACADE MATRIX SIMULATION WITH MULTIPLE WINDOW GROUPS.
+
+
+
+#NOTES:
+#	Set the current working directory to "room" before running the commands below.
+#	Commands are separated by empty line-breaks.
 
 
 #Create octree
 oconv -f materials.rad room.rad overhang/aluminiumGrate.rad  > octrees/roomFmtx.oct
 
 
-#V matrices for Illuminance
+#View matrices for Illuminance
 rfluxmtx -v -I+ -ab 4 -ad 5000 -lw 0.0002 -n 16 -y 100  - varShading/GlazingVmtx1.rad -i octrees/roomFmtx.oct < points.txt > matrices/vmtx/vF11.mtx
 
 rfluxmtx -v -I+ -ab 4 -ad 5000 -lw 0.0002 -n 16 -y 100  - varShading/GlazingVmtx2.rad -i octrees/roomFmtx.oct < points.txt > matrices/vmtx/vF12.mtx
@@ -23,7 +29,7 @@ rfluxmtx -v -I+ -ab 4 -ad 5000 -lw 0.0002 -n 16 -y 100  - varShading/GlazingVmtx
 rfluxmtx -v -I+ -ab 4 -ad 5000 -lw 0.0002 -n 16 -y 100  - varShading/GlazingVmtx4.rad -i octrees/roomFmtx.oct < points.txt > matrices/vmtx/vF14.mtx
 
 
-#V matrices for Images.
+#View matrices for Images.
 
 vwrays -vf views/south.vf -x 400 -y 400 -pj 0.7 -c 9 -ff | rfluxmtx -v -ffc `vwrays -vf views/south.vf -x 400 -y 400 -d` -o matrices/vmtx/hdr/southF1%03d.hdr -ab 4 -ad 1000 -lw 1e-4 -c 9 -n 16 - varShading/GlazingVmtx1.rad -i octrees/roomFmtx.oct
 
@@ -151,3 +157,5 @@ pcomb results/fmtx/F11V.hdr  results/fmtx/F12V.hdr  results/fmtx/F13V.hdr  resul
 
 ###Illuminance
 rmtxop results/fmtx/F11V.ill + results/fmtx/F12V.ill + results/fmtx/F13V.ill + results/fmtx/F14V.ill > results/fmtx/F1100.ill
+
+#Done! (results can be found in results/fmtx folder)

@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
 
-#Commands for running an F-Matrix (FH) simulation for a room with windows in multiple directions.
+#Lines beginning with # are comments.
+#This file is a part of a Radiance Tutorial commissioned by the Lawrence Berkeley National Laboratory.
+#Date:19 AUG 2017
+#Created by Sarith Subramaniam(sarith@sarith.in)
+
+#Commands for running an FACADE-MATRIX (FH) simulation for a ROOM WITH WINDOWS IN MULTIPLE DIRECTIONS.
 #This simulation is for a space without an overhang/shading-device. 
 #The purpose of this simulation is to demonstrate phase-reuse. Therefore, results from previous simulations will be reused to reduce the simulation runtime.
 #The simulations in the file FH.sh must be completed before running the commands on this file.
 
 
-#Lines beginning with # are comments.
-#Set the current working directory to "room2" before running the commands below.
-#Commands are separated by empty line-breaks.
+#NOTES:
+#	Set the current working directory to "room2" before running the commands below.
+#	Commands are separated by empty line-breaks.
 
 
 #Create octree
@@ -92,3 +97,6 @@ dctimestep matrices/vmtx/vFGl3.mtx  matrices/tmtx/clear.xml matrices/dmtx/DFHGl3
 
 #Combine results from window groups together.
 rmtxop results/fmtx/windowGroups/FHCl1N.ill + results/fmtx/windowGroups/FHCl2N.ill + results/fmtx/windowGroupsFHCl3N.ill + results/fmtx/windowGroups/FHGl1N.ill + results/fmtx/windowGroupsFHGl2N.ill + results/fmtx/windowGroups/FHGl3N.ill > results/fmtx/FHN.ill
+
+
+#Done! (results can be found in results/fmtx folder).

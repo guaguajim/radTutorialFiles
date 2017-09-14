@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
 
-#Commands for running an F-Matrix simulation with the FH approach.
-
-
 #Lines beginning with # are comments.
-#Set the current working directory to "room" before running the commands below.
-#Commands are separated by empty line-breaks.
+#This file is a part of a Radiance Tutorial commissioned by the Lawrence Berkeley National Laboratory.
+#Date:19 AUG 2017
+#Created by Sarith Subramaniam(sarith@sarith.in)
+
+
+#Commands for running an FACADE-MATRIX SIMULATION WITH THE FH APPROACH.
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#NOTES:
+#	Set the current working directory to "room" before running the commands below.
+#	Commands are separated by empty line-breaks.
+#	The epw file used in the current tutorial contains only 40 timesteps so that the simulations can completed in a reasonable time.
+
 
 
 # Create an octree
@@ -39,6 +48,7 @@ gendaylit 3 20 10:30EDT -m 75 -o 73.96 -a 40.78 -W 706 162 | genskyvec -m 1 > sk
 ##Annual sky-matrix
 epw2wea assets/USA_NY_New.York-Central.Park.725033_TMY3m.epw assets/NYC.wea
 
+#Create an annual daylight matrix with 145 patches.
 gendaymtx -m 1 assets/NYC.wea > skyVectors/NYC.smx
 
 
@@ -58,3 +68,5 @@ dctimestep -h matrices/vmtx/hdr/southF%03d.hdr matrices/tmtx/clear.xml matrices/
 
 ##For an annual simulation
 dctimestep -o results/fmtx/hdr/southFH%04d.hdr matrices/vmtx/hdr/southF%03d.hdr matrices/tmtx/clear.xml matrices/dmtx/DFH.dfmx skyVectors/NYC.smx
+
+#Done! (results can be found in the results/fmtx folder)
