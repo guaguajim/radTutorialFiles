@@ -8,6 +8,7 @@
 
 #This simulation demonstrates a RADIANCE-BASED IMPLEMENTATION OF THE DAYSIM DDS MODEL. 
 #Citation: Bourgeois,D. , Reinhart, CF. , and Ward, GW. "Standard daylight coefficient model for dynamic daylighting simulations." Building Research & Information 36.1 (2008): 68-82.
+#The commands in this file improve upon the DDS Model by using a greater sky discretization i.e. an MF:6 sun distribution with 5165 solar discs.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -55,19 +56,19 @@ dctimestep matrices/dcd/illum.mtx skyVectors/NYCd.smx | rmtxop -fa -t -c 47.4 11
 echo "void light solar 0 0 3 1e6 1e6 1e6" > skies/suns.rad
 
 ##Create solar discs and corresponding modifiers for 2305 suns corresponding to a Reinhart MF:4 subdivision.
-cnt 2305 | rcalc -e MF:4 -f reinsrc.cal -e Rbin=recno -o 'solar source sun 0 0 4 ${Dx} ${Dy} ${Dz} 0.533' >> skies/suns.rad
+cnt 5165 | rcalc -e MF:6 -f reinsrc.cal -e Rbin=recno -o 'solar source sun 0 0 4 ${Dx} ${Dy} ${Dz} 0.533' >> skies/suns.rad
 
 ##Create an octree black octree, shading device with proxy BSDFs and solar discs.
 oconv -f materialBlack.rad roomBlack.rad skies/suns.rad materials.rad objects/Glazing.rad > octrees/sunCoefficientsDDS.oct
 
 ##Calculate illuminance sun coefficients for illuminance calculations.
-rcontrib -I+ -ab 1 -y 100 -n 16 -ad 256 -lw 1.0e-3 -dc 1 -dt 0 -dj 0 -faf -e MF:4 -f reinhart.cal -b rbin -bn Nrbins -m solar octrees/sunCoefficientsDDS.oct < points.txt > matrices/cds/cdsDDS.mtx
+rcontrib -I+ -ab 1 -y 100 -n 16 -ad 256 -lw 1.0e-3 -dc 1 -dt 0 -dj 0 -faf -e MF:6 -f reinhart.cal -b rbin -bn Nrbins -m solar octrees/sunCoefficientsDDS.oct < points.txt > matrices/cds/cdsDDS.mtx
 
 #Create  sun matrix with 2305 suns
-gendaymtx -5 0.533 -d -m 4 assets/NYC.wea > skyVectors/NYCsunM4.smx
+gendaymtx -5 0.533 -d -m 6 assets/NYC.wea > skyVectors/NYCsunM6.smx
 
 ##RESULTS
-dctimestep matrices/cds/cdsDDS.mtx skyVectors/NYCsunM4.smx | rmtxop -fa -t -c 47.4 119.9 11.6 - > results/dcDDS/cds/annualR.ill
+dctimestep matrices/cds/cdsDDS.mtx skyVectors/NYCsunM6.smx | rmtxop -fa -t -c 47.4 119.9 11.6 - > results/dcDDS/cds/annualR.ill
 
 
 ##Final Step: Combine results 
