@@ -137,7 +137,7 @@ rpict -x 400 -y 400 -ps 1 -av 0.31831 0.31831 0.31831 -ab 0 -vf views/south.vf o
 #Calculate luminance sun coefficients for images for the view file south.vf.
 vwrays -vf views/south.vf -x 400 -y 400 -pj 0.7 -ff | rcontrib  -w- -ab 1 -ad 256 -lw 1.0e-3 -dc 1 -dt 0 -dj 0 -ffc -n 16 `vwrays -vf views/south.vf -x 400 -y 400 -d`  -o matrices/cds/hdrLumFacade/southM6FH%04d.hdr -e MF:6 -f reinhart.cal -b rbin -bn Nrbins -m solar octrees/sunCoefficientsFH.oct
 
-#Generate luminance-based images by multiplying the material map with the illuminance image and then add the 
+#Generate luminance-based images by multiplying the material map with the illuminance image and then add the sun coefficients
 for idx in {0000..5185}
 do
 	pcomb -h -e 'ro=ri(1)*ri(2)+ri(3);go=gi(1)*gi(2)+gi(3);bo=bi(1)*bi(2)+bi(3)' -o matrices/cds/materialMapSouthFH.hdr -o matrices/cds/hdrIllSpace/southM6FH${idx}.hdr -o matrices/cds/hdrLumFacade/southM6FH${idx}.hdr > matrices/cds/hdr/southFH${idx}.hdr

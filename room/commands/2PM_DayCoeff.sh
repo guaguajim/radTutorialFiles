@@ -6,7 +6,7 @@
 #Created by Sarith Subramaniam(sarith@sarith.in)
 
 
-# Commands for a DAYLIGHT COEFFICIENTS simulation.
+# Commands for a TWO-PHASE simulation with Daylight Coefficients simulation.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
