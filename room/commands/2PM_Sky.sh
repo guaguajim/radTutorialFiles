@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-#!/usr/bin/env bash
-
 #Lines beginning with # are comments.
 #This file is a part of a Radiance Tutorial commissioned by the Lawrence Berkeley National Laboratory.
 #Date:20 SEP 2017
@@ -11,6 +9,7 @@
 #	Set the current working directory to "room" before running the commands below.
 #	Commands are separated by empty line-breaks.
 
+# Commands for generating images of sky patches using Daylight Coefficients.
 
 #Create octree
 oconv materials.rad objects/Ground.rad > octrees/sky.oct
