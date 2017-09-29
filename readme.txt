@@ -1,5 +1,7 @@
-#This directory contains exercise files, commands and supporting documents for Radiance tutorial on matrix-based methods.
-#The tutorial can be downloaded from: https://www.radiance-online.org/learning/documentation/matrix-based-methods
+#Exercise files and supporting documents for a Radiance tutorial on matrix-based methods.
+#The tutorial was commissioned by the Lawrence Berkeley National Laboratory (LBNL).
+#Download link: https://www.radiance-online.org/learning/documentation/matrix-based-methods
+#The tutorial and exercise files were created by Sarith Subramaniam(sarith@sarith.in).
 
 #Subdirectories:
 #	room: contains the exercise files and commands used for most of the examples in the tutorial.
