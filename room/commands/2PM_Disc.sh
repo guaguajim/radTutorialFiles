@@ -6,9 +6,11 @@
 #Created by Sarith Subramaniam(sarith@sarith.in)
 
 
-#Commands for DAYLIGHT COEFFICCIENTS SIMULATIONS featuring SKIES WITH HIGHER DISCRETIZATIONS ( greater than 145 patches).
+#Commands for 2-PHASE simulations with highly discretized skies. ( greater than 145 patches).
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 13329
 
 #NOTES:
 #	Set the current working directory to "room" before running the commands below.

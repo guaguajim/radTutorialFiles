@@ -6,11 +6,13 @@
 #Created by Sarith Subramaniam(sarith@sarith.in)
 
 
-#This simulation demonstrates a RADIANCE-BASED IMPLEMENTATION OF THE DAYSIM DDS MODEL. 
+#This simulation demonstrates a Radiance-based implementation of the DAYSIM DDS MODEL. 
 #Citation: Bourgeois,D. , Reinhart, CF. , and Ward, GW. "Standard daylight coefficient model for dynamic daylighting simulations." Building Research & Information 36.1 (2008): 68-82.
 #The commands in this file improve upon the DDS Model by using a greater sky discretization i.e. an MF:6 sun distribution with 5165 solar discs.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 3
 
 #NOTES:
 #	Set the current working directory to "room" before running the commands below.

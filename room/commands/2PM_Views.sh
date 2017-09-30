@@ -6,9 +6,11 @@
 #Created by Sarith Subramaniam(sarith@sarith.in)
 
 
-#Commands for DAYLIGHT COEFFICIENTS IMAGE-BASED simulations with different views.
+#Commands for image-based simulations with Daylight Coefficients for different views.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 1110
 
 #NOTES:
 #	Set the current working directory to "room" before running the commands below.

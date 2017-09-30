@@ -5,10 +5,13 @@
 #Date:19 AUG 2017
 #Created by Sarith Subramaniam(sarith@sarith.in)
 
-#Commands for simulating NON-COPLNAR SHADING SYSTEMS USING THE THREE PHASE METHOD. 
+#Commands for simulating NON-COPLNAR SHADING SYSTEMS using the Three-Phase Method. 
 #The shading system is considered as a part of the overall scene.
 #A more efficient way to evaluate such a system would be using the F-Matrix Method (4PM).
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 374
 
 #NOTES:
 #	Set the current working directory to "room" before running the commands below.

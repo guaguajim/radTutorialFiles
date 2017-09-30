@@ -6,11 +6,13 @@
 #Created by Sarith Subramaniam(sarith@sarith.in)
 
 
-#Commands for running a THREE PHASE IMAGE-BASED SIMULATION USING A DIFFERENT VIEW.
+#Commands for running a THREE PHASE IMAGE-BASED simulation for a different view (default is views/south.vf).
 #The objective of this simulation to demonstrate the applicability of phase-reuse.
 #The commands for generating the Daylight Matrix and Sky Matrix, and the files thus generated, are the same as before.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 353
 
 #NOTES:
 #	Set the current working directory to "room" before running the commands below.
