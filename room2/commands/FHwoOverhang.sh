@@ -10,6 +10,8 @@
 #The purpose of this simulation is to demonstrate phase-reuse. Therefore, results from previous simulations will be reused to reduce the simulation runtime.
 #The simulations in the file FH.sh must be completed before running the commands on this file.
 
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 43
 
 #NOTES:
 #	Set the current working directory to "room2" before running the commands below.
