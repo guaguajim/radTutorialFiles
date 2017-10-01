@@ -7,6 +7,9 @@
 
 #Commands for running an FACADE MATRIX SIMULATION (F1) where the EXTERNAL SHADING SYSTEM EXTENDS BEYOND THE FACADE.
 
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 355
+
 #NOTES:
 #	Set the current working directory to "room3" before running the commands below.
 #	Commands are separated by empty line-breaks.
