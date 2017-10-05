@@ -5,10 +5,13 @@
 #Date:19 AUG 2017
 #Created by Sarith Subramaniam(sarith@sarith.in)
 
-#Commands for running PARAMETRIC SIMULATIONS USING THE THREE-PHASE METHOD. 
+#Commands for running PARAMETRIC SIMULATIONS using THE THREE-PHASE METHOD. 
 #The commands listed in 3PM.sh should be run prior to running commands in this file.
 #Results from previous simulations can thus be used to save computational effort.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 2
 
 #NOTES:
 #	Set the current working directory to "room" before running the commands below.

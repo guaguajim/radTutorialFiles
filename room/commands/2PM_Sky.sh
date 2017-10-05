@@ -5,11 +5,15 @@
 #Date:20 SEP 2017
 #Created by Sarith Subramaniam(sarith@sarith.in)
 
+# Commands for generating images of SKY PATCHES using DAYLIGHT COEFFICIENTS.
+
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 9
+
 #NOTES:
 #	Set the current working directory to "room" before running the commands below.
 #	Commands are separated by empty line-breaks.
 
-# Commands for generating images of sky patches using Daylight Coefficients.
 
 #Create octree
 oconv materials.rad objects/Ground.rad > octrees/sky.oct

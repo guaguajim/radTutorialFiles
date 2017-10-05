@@ -8,6 +8,9 @@
 #Commands for running a FIVE-PHASE SIMULATION.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 12501
+
 #Ulimit needs to be set to a high enough value so that multiple files can be opened simulataneously.
 #For the present simulation, maximum number of open files will be 5165.
 #This command is applicable to Unix-like systems only. On Windows the number of simultaneous files is limited to 512.

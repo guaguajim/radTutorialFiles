@@ -6,9 +6,11 @@
 #Created by Sarith Subramaniam(sarith@sarith.in)
 
 
-# Commands for a TWO-PHASE simulation with Daylight Coefficients simulation.
+# Commands for a TWO-PHASE simulation with Daylight Coefficients.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 939
 
 #NOTES:
 #	Set the current working directory to "room" before running the commands below.

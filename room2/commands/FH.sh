@@ -8,6 +8,9 @@
 
 #Commands for running an FACADE-MATRIX (FH) simulation for a ROOM WITH WINDOWS IN MULTIPLE DIRECTIONS.
 
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 7552
+
 #NOTES:
 #	Set the current working directory to "room2" before running the commands below.
 #	Commands are separated by empty line-breaks.

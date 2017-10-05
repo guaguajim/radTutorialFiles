@@ -15,6 +15,8 @@
 #	Commands are separated by empty line-breaks.
 #	The commands in the file FH.sh must be run before running the commands in this file (to avoid repeating the steps for creating the View Matrix) 
 
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 3102
 
 
 #Create 13 F matrices for Glazing1 by using the %s option.

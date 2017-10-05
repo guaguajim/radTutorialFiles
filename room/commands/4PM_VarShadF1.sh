@@ -8,7 +8,8 @@
 
 #Commands for running an FACADE MATRIX SIMULATION WITH MULTIPLE WINDOW GROUPS.
 
-
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 1216
 
 #NOTES:
 #	Set the current working directory to "room" before running the commands below.

@@ -7,13 +7,17 @@
 
 #Commands for running an FACADE MATRIX SIMULATION (FH) where the EXTERNAL SHADING SYSTEM EXTENDS BEYOND THE FACADE.
 
+#These commands were tested on a dedicated Intel Xeon CPU E5-2680 (v2 @ 2.80GHz) processor.
+#Processor runtime for executing all the commands (in seconds): 361
+
+
 #NOTES:
 #	Set the current working directory to "room3" before running the commands below.
 #	Commands are separated by empty line-breaks..
 
 
 # Create an octree
-oconv -f materials.rad room.rad overhang/aluminiumGrate.rad > octrees/roomFmtx.oct
+oconv -f materials.rad room.rad overhang/aluminium_metal_grate.rad > octrees/roomFmtx.oct
 
 
 #V matrix for Illuminance
