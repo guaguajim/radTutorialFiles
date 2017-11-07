@@ -1,6 +1,6 @@
 Exercise files and supporting documents for a Radiance tutorial on matrix-based methods.
 The tutorial was commissioned by the Lawrence Berkeley National Laboratory (LBNL).
-Download link: https://www.radiance-online.org/learning/documentation/matrix-based-methods
+Download link: https://www.radiance-online.org/learning/tutorials/matrix-based-methods
 The tutorial and exercise files were created by Sarith Subramaniam(sarith@sarith.in).
 
 Subdirectories:
