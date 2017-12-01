@@ -51,7 +51,7 @@ gendaymtx -m 1 assets/NYC.wea > skyVectors/NYC.smx
 dctimestep  matrices/vmtx/v.mtx matrices/tmtx/clear.xml matrices/dmtx/daylight.dmx skyVectors/NYC_Per.vec | rmtxop -fa -c 47.4 119.9 11.6 - > results/3ph/3ph.ill
 
 ##For an annual simulation
-dctimestep  matrices/vmtx/v.mtx matrices/tmtx/clear.xml matrices/dmtx/daylight.dmx skyVectors/NYC.smx | rmtxop -fa -t -c 47.4 119.9 11.6 - > results/3ph/3phAnnual.ill
+dctimestep  matrices/vmtx/v.mtx ```matrices/tmtx/clear.xml``` matrices/dmtx/daylight.dmx skyVectors/NYC.smx | rmtxop -fa -t -c 47.4 119.9 11.6 - > results/3ph/3phAnnual.ill
 
 
 #Images
